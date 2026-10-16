@@ -1,93 +1,56 @@
-# aplicatie pentru feedback continuu (backend restful)
+# Mădălina Crăiniceanu
 
-proiect tehnologii web, ase 2025-2026.
+**Economic Informatics graduate | MSc student in Information Technology for Data Engineering**
 
-hei! aici gasesti tot ce am implementat la backend. proiectul este acum complet functional pentru faza 2.
+I graduated from the Economic Informatics programme at the Bucharest University of Economic Studies (ASE), and I am currently continuing my studies with a Master's degree focused on Data Engineering.
 
-## 1. status proiect: functional
+My background is in software development, databases and data-related projects. I am particularly interested in understanding how applications work from end to end, from collecting and processing data to building useful features around it.
 
-am terminat implementarea si am acoperit toate cerintele: setup, orm, autentificare, plus logica pentru profesori si studenti.
+## Technical interests
 
-### a. infrastructura si securitate (partea initiala)
-* server: node.js cu express.
-* baza de date: postgresql.
-* orm: sequelize (avem modelele users, activities, feedback, courses).
-* securitate: bcrypt pentru parole si jsonwebtoken (jwt) pentru login.
-* protectie: middleware care verifica token-ul pe rutele private.
+- Programming: Python, Java and JavaScript
+- Web development: React, Vite, Node.js and Express
+- Data and databases: SQL, MySQL, Sequelize and data visualization
+- Other areas: REST APIs, JWT authentication, object-oriented programming, Git and GitHub
 
-### b. functionalitati noi implementate (partea finala)
-am adaugat logica de business care lipsea data trecuta:
-* profesorii pot crea activitati noi (cu conditia sa existe un curs).
-* profesorii isi pot vedea lista de activitati si feedback-ul primit.
-* studentii se pot alatura cu un cod de acces.
-* studentii pot trimite feedback anonim (smiley, frowny etc).
+As part of my Master's degree, I will be studying advanced programming for data engineering, artificial intelligence, machine learning, deep learning, Big Data, IoT, natural language processing, data visualization, cloud computing, and data security and privacy.
 
----
+## Experience
 
-## 2. instructiuni de instalare si rulare
+**Technology Intern — EY**  
+University internship, 2025
 
-urmeaza pasii astia ca sa pornesti serverul la tine local.
+As part of my internship, I completed three training courses from the **Druid Conversational AI Academy** and received certificates of completion:
 
-### pasul 1: prerechizite
-trebuie sa ai node.js si postgresql (pgadmin) instalate.
+- **I Technical Beginner Course** — May 7, 2025
+- **II Technical Intermediate Course** — May 7, 2025
+- **III Technical Advanced Course** — May 13, 2025
 
-### pasul 2: instalare
-intra in folderul "backend" si scrie in terminal:
-npm install
+## Selected projects
 
-### pasul 3: configurare baza de date
-1. intra in pgadmin si creeaza o baza de date goala numita "web_feedback_db".
-2. in folderul "backend", creeaza un fisier nou numit ".env" si pune codul de mai jos (schimba parola cu a ta):
+**[GlowGuide](https://github.com/madalinacrainiceanu/GlowGuide)**  
+A full-stack skincare platform developed with React, Node.js, Express, MySQL and Sequelize. The application includes personalized recommendations, authentication, progress tracking, data visualization, a community forum and a chatbot.
 
-DB_DIALECT=postgres
-DB_HOST=localhost
-DB_USER=postgres
-DB_PASS=parola_ta_aici
-DB_NAME=web_feedback_db
-PORT=3000
-JWT_SECRET=cheiesecratafeedbacktw
+[Live demo](https://licenta-theta.vercel.app/)
 
-### pasul 4: pornire
-tot in folderul backend, scrie comanda:
-npm start
+**[Movie Analysis Dashboard](https://github.com/madalinacrainiceanu/proiect-seminar-3-pachete-software)**  
+A Python project for exploring and visualizing a movie dataset.
 
-daca apare "conexiune bd stabilita", inseamna ca serverul merge. tabelele se creeaza automat.
+**[Vanilla JS Canvas Editor](https://github.com/madalinacrainiceanu/vanilla-js-canvas-editor)**  
+A raster graphics editor built with Vanilla JavaScript and HTML5 Canvas, with a focus on object-oriented programming and browser-based graphics manipulation.
 
----
+**University team projects**  
+Some of my university projects were developed together with [Vlad Florentina](https://github.com/VladFlorentina), with an equal contribution from both of us. These include projects related to TikTok marketing analysis, distributed messaging systems and web application development.
 
-## 3. nota importanta (citeste aici daca nu merge crearea activitatii)
+## Education
 
-ca sa poti testa ruta de creare activitate (POST /api/activities), ai nevoie de un curs in baza de date, pentru ca activitatea este legata de un curs (foreign key).
+- Master's degree in Information Technology for Data Engineering — Bucharest University of Economic Studies (ASE), ongoing
+- Bachelor's degree in Economic Informatics — Bucharest University of Economic Studies (ASE)
 
-momentan nu avem interfata sa cream cursuri, asa ca trebuie sa inserezi unul manual.
-deschide pgadmin -> query tool pe baza ta si ruleaza asta:
+## Currently learning
 
-INSERT INTO "Courses" (name, "userId", "createdAt", "updatedAt") 
-VALUES ('Tehnologii Web', 1, NOW(), NOW());
+I am currently working on strengthening my knowledge of data processing, ETL workflows, SQL, data pipelines and backend development. My goal is to build practical projects that connect software development with data.
 
-(nota: comanda asta merge doar dupa ce ti-ai facut un cont de profesor si ai id-ul 1 in tabela users).
+## Contact
 
----
-
-## 4. testarea functionalitatii (dovada de lucru)
-
-foloseste thunder client (sau postman) pentru a verifica implementarea, exact cum se cerea in ghid:
-
-1. *inregistrare profesor:*
-   * metoda: POST
-   * url: http://localhost:3000/api/auth/register
-   * body (json): {"email": "profesor@ase.ro", "password": "parola"}
-
-2. *obtine token:* * la succes, primesti un token lung in raspuns. copiaza-l!
-
-3. *test ruta protejata (creare activitate):*
-   * metoda: POST
-   * url: http://localhost:3000/api/activities
-   * header: adauga cheia x-auth-token si pune valoarea token-ului copiat anterior.
-   * body (json): {"courseId": 1, "description": "Curs Test", "startDate": "2025-12-06T10:00:00Z", "durationMinutes": 60}
-   * rezultat asteptat: status 201 created si un accessCode in raspuns.
-
-4. *test student (fara token):*
-   * metoda: POST
-   * url: http://localhost:3000/api/join
-   * body (json): {"access_code": "CODUL_PRIMIT_MAI_SUS"}
+I am open to internships, junior opportunities and collaborations related to data engineering, data analysis, backend development and software engineering.
